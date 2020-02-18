@@ -65,7 +65,6 @@ class Regression:
             func += f'({result[index]})x{index} + '
 
         Regression.func = func + 'e'
-        return Regression.func
 
     @staticmethod
     def _create_e():
@@ -82,7 +81,6 @@ class Regression:
             sum_e += element ** 2
 
         Regression.S = np.sqrt(factor * sum_e)
-        return Regression.S
 
     @staticmethod
     def _create_s_vector():
@@ -93,7 +91,6 @@ class Regression:
             s_vector.append(np.sqrt(back_plan_matrix[index][index]))
 
         Regression.S_VECTOR = s_vector
-        return Regression.S_VECTOR
 
     @staticmethod
     def _create_t():
@@ -102,7 +99,6 @@ class Regression:
             t.append(np.abs(Regression.beta[index] / Regression.S_VECTOR[index]))
 
         Regression.t = t
-        return Regression.t
 
     @staticmethod
     def _create_critical():
@@ -121,9 +117,9 @@ class Regression:
             current_t = Regression.t[index]
             report += f't[{index}] = {current_t}, '
             if current_t > Regression.critical:
-                report += f'{current_t} > {critical}, => оценка является значимой \n'
+                report += f'{current_t} > {critical}, => критерий является значимым \n'
             else:
-                report += f'{current_t} < {critical}, => оценка не является значимой \n'
+                report += f'{current_t} < {critical}, => критерий не является значимым \n'
 
         Regression.report = report
 
