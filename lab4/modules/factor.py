@@ -1,6 +1,5 @@
 import numpy
 
-
 class Factor:
     N = 0
     n = 0
@@ -125,7 +124,7 @@ class Factor:
             Factor.W.append(numerator / sum_delta)
 
     @staticmethod
-    def create_z_funcs():
+    def _create_z_funcs():
         current_z = 1
         for row in Factor.A:
             Factor.z_funcs += f'Z[{current_z}] = '
@@ -136,7 +135,7 @@ class Factor:
             current_z += 1
 
     @staticmethod
-    def create_f():
+    def _create_f():
         a_back = numpy.linalg.inv(Factor.A)
 
         for i in range(0, len(Factor.W)):
@@ -171,8 +170,8 @@ class Factor:
         Factor._v_to_diag()
         Factor._create_a()
         Factor._create_w()
-        Factor.create_z_funcs()
-        Factor.create_f()
+        Factor._create_z_funcs()
+        Factor._create_f()
         Factor._create_report()
         return Factor.report
 
